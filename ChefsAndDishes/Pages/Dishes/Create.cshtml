@@ -1,0 +1,61 @@
+﻿@page
+@model ChefsAndDishes.Pages.Dishes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    ViewData["Test"] = "AllChefs";
+
+}
+
+<h1>Create</h1>
+
+<h4>Dish</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dish.Name" class="control-label"></label>
+                <input asp-for="Dish.Name" class="form-control" />
+                <span asp-validation-for="Dish.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.NumOfCals" class="control-label"></label>
+                <input asp-for="Dish.NumOfCals" class="form-control" />
+                <span asp-validation-for="Dish.NumOfCals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Description" class="control-label"></label>
+                <input asp-for="Dish.Description" class="form-control" />
+                <span asp-validation-for="Dish.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.ChefID" class="control-label"></label>
+                <select asp-for="Dish.ChefID" class="form-control"
+                        asp-items="@Model.ChefDropDown">
+                    <option value="">-- Select Chef --</option>
+
+
+                    <option value="value">text</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Tastiness" class="control-label"></label>
+                <input asp-for="Dish.Tastiness" class="form-control" />
+                <span asp-validation-for="Dish.Tastiness" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
