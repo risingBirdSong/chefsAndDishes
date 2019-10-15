@@ -37,16 +37,25 @@ namespace ChefsAndDishes.Pages.Dishes
         // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            var stop = true;
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            var emptyDish = new Dish();
 
-            _context.Dishes.Add(Dish);
+            if (await TryUpdateModelAsync<Dish>(
+                emptyDish,
+                "dish",
+                s => s.Name, s => s.NumOfCals, s => s.Tastiness, s => s.Tastiness, s => s.ChefID, s => s.Description, s => s.MyChef
+                ))
+
+              emptyDish.MyChef = _context.Chefs.FirstOrDefault(c => c.ID == emptyDish.ChefID);
+            { 
+            _context.Dishes.Add(emptyDish);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+            }
+
+            PopulateDropDown(_context, emptyDish.ChefID);
+            return Page();
+
         }
     }
 }

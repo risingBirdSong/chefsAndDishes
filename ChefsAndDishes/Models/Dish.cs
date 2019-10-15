@@ -19,6 +19,8 @@ namespace ChefsAndDishes.Models
         [Display(Name="the Chef")]
         public int ChefID { get; set; }
 
+        public Chef MyChef { get; set; }
+
         public int Tastiness { get; set; }
     }
 }

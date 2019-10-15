@@ -4,14 +4,16 @@ using ChefsAndDishes.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChefsAndDishes.Migrations
 {
     [DbContext(typeof(KitchenContext))]
-    partial class KitchenContextModelSnapshot : ModelSnapshot
+    [Migration("20191015222850_nowWantToGrabtheDishesChef")]
+    partial class nowWantToGrabtheDishesChef
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

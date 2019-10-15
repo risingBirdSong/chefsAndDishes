@@ -23,7 +23,9 @@ namespace ChefsAndDishes.Pages.Dishes
 
         public async Task OnGetAsync()
         {
-            Dish = await _context.Dishes.ToListAsync();
-        }
+            Dish = await _context.Dishes
+                .Include(d => d.MyChef)
+                .ToListAsync();
+        }           
     }
 }
